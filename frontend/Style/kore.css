@@ -1,0 +1,188 @@
+/* --- 00. Global Styles & Variables (OKLCH) --- */
+:root {
+  /* Paleta de Colores */
+  --color-bg: oklch(14% 0.03 255);        /* Fondo oscuro azulado */
+  --color-surface: oklch(18% 0.02 255);   /* Elementos oscuros */
+  --color-primary: oklch(75% 0.22 205);   /* Cian neón */
+  --color-accent: oklch(70% 0.3 325);     /* Magenta neón */
+  --text-high: oklch(95% 0.01 255);       /* Texto blanco suave */
+  --text-med: oklch(70% 0.01 255);        /* Texto gris */
+
+  /* Tipografía */
+  --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Fuente limpia por defecto */
+  --header-font-weight: 800;
+  
+  /* Espaciado */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  
+  /* Bordes */
+  --border-radius: 8px;
+  --box-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+}
+
+/* --- 01. Basic Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--text-high);
+  font-family: var(--font-family);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que el body ocupe al menos la altura de la pantalla */
+}
+
+/* --- 02. Header Styling --- */
+header {
+  background-color: var(--color-surface);
+  color: var(--color-primary); /* Título en color principal */
+  padding: var(--space-md) var(--space-lg);
+  text-align: center;
+  box-shadow: var(--box-shadow-md);
+  border-bottom: 2px solid var(--color-accent); /* Detalle de línea inferior */
+}
+
+header h1 {
+  font-weight: var(--header-font-weight);
+  text-transform: uppercase; /* Hace que el título "KORE" se vea más deportivo */
+  letter-spacing: 2px; /* Espaciado entre letras para un toque tecnológico */
+  font-size: 2.5rem;
+  
+  /* Efecto de brillo sutil en el texto */
+  text-shadow: 0 0 10px var(--color-primary);
+}
+
+
+/* --- 03. Layout de Autenticación (Login/Sign up) --- */
+
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; /*ocupa el espacio restante debajo del header*/
+    gap:4rem;
+    padding: var(--space-lg);
+    position: relative;
+    z-index: 2;/*para que este por encima del canvas de fondo*/
+}
+
+/*circulos laterales para las banderas*/
+.flag-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 0 15px oklch(  75% 0.22 205/0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+
+.flag-circle:hover {
+    transform: scale(1.05);
+}
+
+.flag-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;/*Asegura que la bandera llene el circulo bien*/
+}
+
+
+
+/*tarjeta del formulario central*/
+
+.auth-card {
+    background-color: var(--color-surface);
+    width: 100%;
+    max-width: 400px;
+    border-radius: var((--border-radius));
+    box-shadow: var(--box-shadow-md);
+    border: 1px solid oklch(25% 0.02 255);
+    overflow: hidden;
+}
+
+
+
+/* pestañas de navegacion (login / sign up) */
+.auth-tabs {
+    display: felx;
+    background-color:  oklch(12% 0.03 255);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: var(--space-sm);
+    background: none;
+    border: none;
+    color: var(--text-med);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.tab-active {
+    color: var(--color-primary);
+    background-color: var(--color-surface);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+/* estilo del formulario */
+.auth-form {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--color-bg);
+    border: 1px solid oklch(30% 0.02 255);
+    border-radius: 6px;
+    color: var(--text-high);
+    font-size: 1rem;
+}
+
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 5px var(--color-primary);
+}
+
+.auth-submit-btn {
+    margin-top:var(--color-primary) ;
+    padding: 0.75rem;
+    background-color: var(--color-primary);
+    color: oklch(10% 0.03 255);
+    font-weight: 800;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: opacity 0.2;
+
+}
+
+
+.auth-submit-btn:hover {
+    opacity: 0.9;
+}

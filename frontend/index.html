@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/kore.css">
+    <link rel="shortcut icon" href="Style/image/kore_ball.png" type="image/x-icon">
+    <title>Kore ball</title>
+</head>
+<body>
+    <header>
+        <h1>Kóre</h1>
+    </header>
+
+    <main class="auth-wrapper">
+        <!-- Círculo Izquierdo (Banderas) -->
+        <div class="flag-circle" id="left-flag-container">
+            <!-- Aquí pondremos una imagen de ejemplo o la rotaremos con JS -->
+            <img src="https://flagcdn.com/w160/co.png" alt="Bandera Colombia" id="left-flag">
+        </div>
+
+        <!-- Tarjeta Central con Formulario Dinámico -->
+        <div class="auth-card">
+            <div class="auth-tabs">
+                <button class="tab-btn active" id="login-tab">Login</button>
+                <button class="tab-btn" id="signup-tab">Sign up</button>
+            </div>
+
+            <form class="auth-form" id="authForm">
+                <!-- Campo dinámico según la pestaña -->
+                <div id="extra-fields" style="display: none;">
+                    <label for="username" style="font-size: 0.85rem; color: var(--text-med);">Usuario</label>
+                    <input type="text" id="username" placeholder="Tu nick de jugador">
+                </div>
+
+                <label for="email" style="font-size: 0.85rem; color: var(--text-med);">Correo</label>
+                <input type="email" id="email" placeholder="kore@player.com" required>
+
+                <label for="password" style="font-size: 0.85rem; color: var(--text-med);">Contraseña</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+
+                <button type="submit" class="auth-submit-btn" id="submit-btn-text">Entrar al Partido</button>
+            </form>
+        </div>
+
+        <!-- Círculo Derecho (Banderas) -->
+        <div class="flag-circle" id="right-flag-container">
+            <img src="https://flagcdn.com/w160/br.png" alt="Bandera Brasil" id="right-flag">
+        </div>
+    </main>
+
+    <script src="vanilla/kore.js"></script>
+</body>
+</html>
