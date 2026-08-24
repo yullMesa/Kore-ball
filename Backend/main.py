@@ -30,6 +30,10 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
 
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
 @app.post("/api/signup", status_code=status.HTTP_201_CREATED)
 def register_user(user: UserCreate, db: Session = Depends(get_db)):
     # 1. Verificar si el correo o el usuario ya existen
@@ -65,4 +69,30 @@ def register_user(user: UserCreate, db: Session = Depends(get_db)):
             "username": new_user.username,
             "email": new_user.email
         }
+    }
+
+
+@app.post("/api/login")
+def login_user(user: UserLogin, db: Session = Depends(get_db)):
+    # 1. Buscar al usuario por su correo en la base de datos
+    db_user = db.query(models.User).filter(models.User.email == user.email).first()
+    
+    if not db_user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Correo o contraseña incorrectos"
+        )
+    
+    # 2. Verificar si la contraseña coincide con el hash guardado
+    if not pwd_context.verify(user.password, db_user.password_hash):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Correo o contraseña incorrectos"
+        )
+    
+    # 3. Respuesta exitosa (aquí luego retornaremos un token JWT)
+    return {
+        "message": "¡Inicio de sesión exitoso!",
+        "username": db_user.username,
+        "email": db_user.email
     }

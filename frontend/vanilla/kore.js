@@ -1,3 +1,9 @@
+// Simplemente importas el archivo para que cargue su lógica
+import './auth.js';
+
+// Aquí sigue el resto de la lógica de kore.js (como las animaciones de las banderas o el canvas)
+console.log("Kóre inicializado correctamente 🚀");
+
 // 1. Lógica para cambiar entre Login y Sign up
 const loginTab = document.getElementById('login-tab');
 const signupTab = document.getElementById('signup-tab');

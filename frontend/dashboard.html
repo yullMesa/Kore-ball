@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/kore.css">
+    <link rel="shortcut icon" href="Style/image/kore_ball.png" type="image/x-icon">
+    <title>Kóre - Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Kóre</h1>
+        <div id="user-display" style="color: var(--text-med); font-weight: 600;">
+            <!-- Aquí inyectaremos el usuario con JS -->
+        </div>
+    </header>
+
+    <main class="dashboard-wrapper" style="display: flex; justify-content: center; align-items: center; flex: 1; padding: var(--space-lg);">
+        <div class="auth-card" style="text-align: center; padding: 2rem;">
+            <h2 style="color: var(--text-high); margin-bottom: 1rem;">Vestuario</h2>
+            <p style="color: var(--text-med); margin-bottom: 1.5rem;">Todo listo para el encuentro. Selecciona una opción para continuar.</p>
+            
+            <button id="enter-game-btn" class="auth-submit-btn" style="margin-bottom: 1rem;">Entrar a la Cancha (Canvas)</button>
+            <button id="logout-btn" style="background: none; border: none; color: oklch(60% 0.2 25); cursor: pointer; font-weight: 600;">Cerrar Sesión</button>
+        </div>
+    </main>
+
+    <!-- Creamos un archivo separado para la lógica del dashboard -->
+    <script type="module" src="vanilla/dashboard.js"></script>
+</body>
+</html>
